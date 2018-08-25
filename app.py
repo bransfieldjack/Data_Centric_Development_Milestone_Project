@@ -1,5 +1,10 @@
 import os
 import pymysql
+from flask import Flask, render_template, redirect, request, url_for
+
+
+app = Flask(__name__)
+
 
 
 #Gets the username from the MySql database in the cloud9 workspace. 
@@ -12,12 +17,23 @@ connection = pymysql.connect(host='localhost', user = username, password = '', d
 
 try:
     #Query the database
-    with connection.cursor() as cursor:
-        sql = "SELECT * FROM Recipes;"
+    with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+        sql = "SELECT * FROM recipes;"
         cursor.execute(sql)
-        result = cursor.fetchall()
-        print(result)
+        for row in cursor:
+            print(row)
 finally:
     #Close the connection to the database.
     connection.close()
+
     
+@app.route('/')
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+       
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+        port=int(os.environ.get('PORT')),
+debug=True)
