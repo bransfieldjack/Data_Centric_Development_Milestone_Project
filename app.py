@@ -31,6 +31,11 @@ finally:
 @app.route('/home')
 def home():
     return render_template('home.html')
+    
+    
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add_recipe.html')
 
        
 if __name__ == '__main__':
