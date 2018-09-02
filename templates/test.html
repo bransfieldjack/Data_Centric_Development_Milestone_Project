@@ -1,7 +1,66 @@
-{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
 
 
-<div class="container">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Recipes WebApp</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Bootstrap JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" type="text/css">
+  
+  </head>
+
+  <body>
+<br>
+<br>
+<br>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{url_for('home')}}">Jack's Recipe's</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('about')}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('home')}}">Recipes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('add_recipe')}}" id="navbarDropdownPortfolio" aria-haspopup="false" aria-expanded="false">
+                Add Recipe
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
     <br>
         <div class="row">
             
@@ -11,7 +70,7 @@
             
             <div class="container">
             
-                <form action="{{ url_for('insert_record') }}" id="form1" method="POST" class="col s12">
+                <form action="{{ url_for('add_recipe') }}" method="POST" class="col s12">
 
 
                     <div class="row col s6" label for="icon_prefix">
@@ -46,7 +105,8 @@
                     </div>
                     
                     
-                    <div class="row col s12" label for="icon_prefix">   
+                   
+                     <div class="row col s12" label for="icon_prefix">   
                               
                       <!-- Dropdown Trigger -->
                       <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
@@ -62,6 +122,7 @@
                       </ul>
                                         
                     </div>    
+                  
 
 
                     <div class="row col s12" label for="icon_prefix">
@@ -101,5 +162,10 @@
                 </form>
             </div>
 </div>
-
-{% endblock %}
+  
+            <script type="text/javascript">
+                $('.dropdown-trigger').dropdown();
+            </script>      
+ 
+</body>
+</html>

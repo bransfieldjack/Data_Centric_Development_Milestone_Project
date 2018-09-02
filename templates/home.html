@@ -1,28 +1,34 @@
 {% extends 'base.html' %} {% block content %}
 <br>
-  <!-- Page Content -->
-        <div class="container">
-          {% for recipe in recipe_name %}
-            {% for img in images %}
-              <!-- Recipe One -->
-                <div class="row">
-                  <div class="col-md-4">
-                    <img class="img-fluid rounded mb-3 mb-md-0" src="{{url_for('static', filename='images/' ) }}">
-                      <a href="">{{ img }}</a>
-                  </div>
-                  <div class="col-md-8">
-                    <h3>
-                      <strong>{{recipe.recipe_name}}</strong>
-                    </h3>
-                      <p>{{recipe.recipe_description}}</p>
-                        <a class="btn btn-primary" href="#">View Recipe
-                          <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                  </div>
-        </div>
-            {% endfor %}
-          {% endfor %}
-    <!-- /.container -->
+
+
+  {% for recipe in recipe_name %}
+    <!-- Page Content -->
+          <div class="container">
+              
+                <!-- Recipe One -->
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img class="img-fluid rounded mb-3 mb-md-0" src="{{url_for('static', filename='images/' ) }}">
+                        <a href="">{{ img }}</a>
+                    </div>
+                    <div class="col-md-8">
+                      <h1>
+                        <strong>{{recipe.recipe_name}}</strong>
+                          <h3>
+                            <strong>{{recipe.user_name}}</strong>
+                          </h3>
+                      </h1>
+                        <p>{{recipe.recipe_description}}</p>
+                          <a class="btn btn-primary" href="{{url_for('view_recipe')}}">View Recipe
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                    </div>
+          </div>
+            
+  {% endfor %}
+
+          
     
 
     <!-- Footer -->

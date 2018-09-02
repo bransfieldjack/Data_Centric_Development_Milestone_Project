@@ -14,10 +14,13 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- Bootstrap core JavaScript/jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+    <!-- Bootstrap JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
-    <!-- Materialize -->
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    
+    <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!-- Bootstrap core CSS -->
@@ -65,16 +68,17 @@
   
       <script type="text/javascript">
           $(document).ready(function() {
-              $('select').formSelect();
-              $('.collapsible').collapsible();
-              $(".button-collapse").sideNav();
-              $('select').material_select();
-              $('.dropdown-toggle').dropdown()
+            $('.dropdown-trigger').dropdown();
+              
+          $(document).on("submit", "form1", function(e){
+              e.preventDefault();
+              alert('it works!');
+              return  false;
+          });
           });
       </script>
-      
-      <script> src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" </script>
 
+        
   </body>
 
 </html>
