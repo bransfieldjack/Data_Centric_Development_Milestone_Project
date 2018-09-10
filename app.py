@@ -17,7 +17,7 @@ mongo = PyMongo(app)
 @app.route('/home')
 def home():
     images = os.listdir(os.path.join(app.static_folder, "images"))
-    return render_template('home.html', images = images, recipe_name=mongo.db.recipe_name.find())
+    return render_template('home.html', images = images, recipe_name=mongo.db.recipes.find())
     
     
 @app.route('/add_recipe', methods=['GET', 'POST'])
@@ -27,20 +27,26 @@ def add_recipe():
     
 @app.route('/insert_record', methods=['GET', 'POST'])
 def insert_record():
-    item = mongo.db.recipe_name
+    item = mongo.db.recipes
     item.insert_one(request.form.to_dict())
     return redirect(url_for('add_recipe'))
-    
-    
+
     
 @app.route('/about')
 def about():
     return render_template('about.html')
     
     
-@app.route('/view_recipe')
-def view_recipe():
-    return render_template('view_recipe.html', recipe_name=mongo.db.recipe_name.find())
+@app.route('/view_recipe/<recipe_name>', methods=['GET', 'POST'])
+def view_recipe(recipe_name):
+    find_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_name)})
+    return render_template('view_recipe.html', recipe = find_recipe )
+    
+    
+@app.route('/view_image/<image_name>', methods=['GET', 'POST'])
+def view_image(image_name):
+    find_image = mongo.db.images.find_one({"_id": ObjectId(image_name)})
+    return redirect(url_for('home'))
 
        
 if __name__ == '__main__':
