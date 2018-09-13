@@ -1,13 +1,25 @@
 {% extends 'base.html' %} {% block content %}
-
+<br>
+<br>
+<div class="container">
+    
+    <div class="row col s6">
+        <h1>Add Recipe</h1>
+    </div>
+    
+    <div class="row">
+        <div class="col s6">  
+            <h3>Recipe Image Will Appear Here:</h3>
+                {{ dropzone.create(action_view='add_recipe') }}
+        </div>
+    </div>
+    
+</div>
 
 <div class="container">
     <br>
         <div class="row">
-            
-            <div class="row col s6">
-                <h1>Add Recipe</h1>
-            </div>
+
             
             <div class="container">
             
@@ -58,8 +70,8 @@
                                 <!-- Dropdown Structure -->
                                     <ul id='dropdown1' class='dropdown-content'>
                                         <li><a href="#!" id="dietary_requirement" name="meat">Meat</a></li>
-                                        <li><a href="#!" id="dietary_requirement" name="vegetarian">Vegetarian</a></li>
-                                        <li><a href="#!" id="dietary_requirement" name="desert">Desert</a></li>
+                                        <li><a href="#!" id="dietary_requirement" name="veg">Veg</a></li>
+                                        <li><a href="#!" id="dietary_requirement" name="sweet">Sweet</a></li>
                                     </ul>
                         </div>
                                         
@@ -92,16 +104,20 @@
                             </div>
                     </div>
                     
+                    <br>
                     
-                        <div class="row col s12">
-                            <button class="btn waves-effect waves-light" type="submit"> 
-                                <input id="submit" type="submit" value="Submit">
-                            </button>
-                        </div>
+                    <div class="row col s12">
+                        <button class="btn waves-effect waves-light" type="submit"> 
+                            <input id="submit" type="submit" value="Submit">
+                        </button>
+                    </div>
                         
+                            
 
                 </form>
+                    
             </div>
+            
+            
 </div>
-
 {% endblock %}
