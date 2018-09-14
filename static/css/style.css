@@ -2,3 +2,7 @@ div {
     width: auto;
     word-wrap: break-word;
 }
+img {
+    height: 500px;
+    width: 80%;
+}

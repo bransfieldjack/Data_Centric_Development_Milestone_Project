@@ -1,50 +1,52 @@
 {% extends 'base.html' %} {% block content %}
 <br>
-
-
-  {% for recipe in recipe_name %}
-    <!-- Page Content -->
-          <div class="container">
-              
-                <!-- Recipe One -->
-                  <div class="row lg12">
-                    <div class="col-s-12">
-                      <strong></strong>
-                    </div>
-                  </div>
-              
-             
-                    
-                  <div class="row lg12">
-                    <div class="col-s-12">
-                      <img src="{{ recipe.image_name }}">
-                        <h1>
-                              <strong>{{recipe.recipe_name}}</strong>
-                            <h3>
-                              <strong>{{ recipe.user_name }}</strong>
-                            </h3>
-                        </h1>
-                            <p>{{recipe.recipe_description}}</p>
-                          <a class="btn btn-primary" href="{{url_for('view_recipe', recipe_name=recipe._id)}}">View Recipe
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                          </a>
-                    </div>
-                  </div>
-                  
-          </div>
-            
-  {% endfor %}
-
-          
-    
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
+<br>
+<br>
+{% for recipe in recipe_name %}
+   <!-- Page Content -->
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+         
+         <!-- Recipe One -->
+         <div class="row lg12">
+            <div class="col-s-12">
+               <strong></strong>
+            </div>
+         </div>
+      
+         <div class="row lg12">
+            <div class="col-s-6">
+               <img src="{{ recipe.image_name }}" style="border: 5px solid #626d7f; padding:5px;">
+                  <br>
+                  <br>
+                     <h1>
+                        <strong>{{recipe.recipe_name}}</strong>
+                     </h1>
+                     <br>
+                     <br>
+                        <h3>
+                           <P>Uploader: {{ recipe.user_name }}</P>
+                        </h3>
+                     <br>
+                     <wrap><p>{{recipe.recipe_description}}</p></wrap>
+                        <a class="btn btn-primary" href="{{url_for('view_recipe', recipe_name=recipe._id)}}">View Recipe
+                           <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+            </div>
+         </div>
+                  
       </div>
-      <!-- /.container -->
-    </footer>
-    
+{% endfor %}
+
+<!-- Footer -->
+   <footer class="py-5 bg-dark">
+      <div class="container">
+         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+<!-- /.container -->
+   </footer>
 
 {% endblock %}
