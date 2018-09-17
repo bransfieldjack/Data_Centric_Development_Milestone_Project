@@ -1,5 +1,23 @@
+Upload with Flask + Dropzone:
 https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d
 
+Storing Flask uploaded images and files on Amazon S3:
 https://greenash.net.au/thoughts/2015/04/storing-flask-uploaded-images-and-files-on-amazon-s3/
 
+Stack exchange article on image storage:
 https://dba.stackexchange.com/questions/119271/storing-files-on-mongodb
+
+Connecting to S3:
+http://zabana.me/notes/upload-files-amazon-s3-flask.html
+
+Installing Bower on Ubuntu:
+https://tecadmin.net/install-bower-on-ubuntu/
+
+How to upload a file to directory in S3 bucket using boto
+https://stackoverflow.com/questions/15085864/how-to-upload-a-file-to-directory-in-s3-bucket-using-boto
+
+Upload directly to S3 from flask app. Updating IAM policy. 
+https://dyrynda.com.au/blog/uploading-files-to-amazon-s3-from-the-browser-part-one
+
+***Flask Integration with Amazon S3***
+https://kishstats.com/python/2018/03/22/flask-amazon-s3-part-3.html

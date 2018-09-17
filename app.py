@@ -1,30 +1,21 @@
 import os
+import sys
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask_dropzone import Dropzone
-from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+import boto3
+from config import S3_BUCKET, S3_KEY, S3_SECRET
 
+s3_resource = boto3.resource(
+   "s3",
+   aws_access_key_id=S3_KEY,
+   aws_secret_access_key=S3_SECRET
+)
 
 app = Flask(__name__)
 app.secret_key = "secret"
 app.config["MONGO_DBNAME"] = 'task_manager'
 app.config["MONGO_URI"] = 'mongodb://root:s!evan101@ds233212.mlab.com:33212/recipes-data-centric'
-
-
-dropzone = Dropzone(app)
-
-
-app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
-app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
-app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*'
-app.config['DROPZONE_REDIRECT_VIEW'] = 'add_recipe'
-app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads'
-
-
-photos = UploadSet('photos', IMAGES)
-configure_uploads(app, photos)
-patch_request_class(app)  # set maximum file size, default is 16MB
 
 
 mongo = PyMongo(app)
@@ -39,6 +30,7 @@ def landing():
 
 @app.route("/home", methods = ["GET","POST"])
 def home():
+    
     recipe_name=mongo.db.recipes.find()
     find_user =  mongo.db.users.find_one({"_id": ObjectId()})
     image = mongo.db.images.find()
@@ -47,23 +39,6 @@ def home():
     
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
-    
-    # list to hold our uploaded image urls
-    file_urls = []
-    
-    if request.method == 'POST':
-        file_obj = request.files
-        for f in file_obj:
-            file = request.files.get(f)
-            # save the file with to our photos folder
-            filename = photos.save(
-                file,
-                name=file.filename    
-            )
-            # append image urls
-            file_urls.append(photos.url(filename))
-
-        return "uploading..."
     return render_template('add_recipe.html')
     
     
@@ -71,6 +46,10 @@ def add_recipe():
 def insert_record():
     item = mongo.db.recipes
     item.insert_one(request.form.to_dict())
+    file = request.files['file']
+    s3_resource = boto3.resource('s3')
+    my_bucket = s3_resource.Bucket(S3_BUCKET)
+    my_bucket.Object(file.filename).put(Body=file)
     return redirect(url_for('add_recipe'))
     
     
@@ -87,6 +66,11 @@ def about():
     return render_template('about.html')
     
     
+@app.route('/categories')
+def categories():
+    return render_template('categories.html')
+    
+    
 @app.route('/view_recipe/<recipe_name>', methods=['GET', 'POST'])
 def view_recipe(recipe_name):
     find_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_name)})
@@ -101,10 +85,30 @@ def view_image(image_name):
 
 @app.route('/testing')
 def testing():
+    
     return render_template('testing.html')
+    
+    
+@app.route('/files')
+def files():
+    s3_resource = boto3.resource('s3')
+    my_bucket = s3_resource.Bucket(S3_BUCKET)
+    summaries = my_bucket.objects.all()
+    return render_template('files.html', my_bucket=my_bucket, summaries=summaries)
 
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    file = request.files['file']
+
+    s3_resource = boto3.resource('s3')
+    my_bucket = s3_resource.Bucket(S3_BUCKET)
+    my_bucket.Object(file.filename).put(Body=file)
+
+    return redirect(url_for('files'))
        
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
 debug=True)
+

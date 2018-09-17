@@ -6,3 +6,18 @@ img {
     height: 500px;
     width: 80%;
 }
+.category_image {
+    height: 80%;
+    width: 100%;
+    border: 5px solid #f2f4f7; padding:2px;
+}
+.category_image_paleo {
+    height: 225px;
+    width: 100%;
+    border: 5px solid #f2f4f7; padding:2px;
+}
+.category_image_popular {
+    height: 205px;
+    width: 100%;
+    border: 5px solid #f2f4f7; padding:2px;
+}

@@ -7,13 +7,6 @@
         <h1>Add Recipe</h1>
     </div>
     
-    <div class="row">
-        <div class="col s6">  
-            <h3>Recipe Image Will Appear Here:</h3>
-                {{ dropzone.create(action_view='add_recipe') }}
-        </div>
-    </div>
-    
 </div>
 
 <div class="container">
@@ -23,8 +16,19 @@
             
             <div class="container">
             
-                <form action="{{ url_for('insert_record') }}" id="form1" method="POST" class="col s12">
-
+                <form action="{{ url_for('insert_record') }}" id="form1" method="POST" class="col s12" enctype="multipart/form-data">
+                    
+                    <div class="row m12">
+                        <div class="col s6">  
+                            <h3>Upload an image for your recipe:</h3>
+                        </div>
+                        <div class="col s6">  
+                            <p><input type="file" name="file"></p>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <br>
 
                     <div class="row col s6" label for="icon_prefix">
                         <div class="input-field col s6">
@@ -58,25 +62,23 @@
                     </div>
                     
                     
-                    <div class="col s12" label for="icon_prefix">   
-                       
-                        <div class="row col s8">
-                           <strong> Dietary Requirements/Food Type </strong>
+                    <div class="row col s12" label for="icon_prefix">
+                        <div class="col s6">
+                            <strong> Dietary Requirements/Food Type </strong>
+                                <input id="food_category" name="food_category">
+                                    <select class="icons">
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/meat_eaters.jpg">Meat</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/vegetarian.jpg">Vegetarian</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/keto.jpg">Keto</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/paleo.jpg">Paleo</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/asian_fusion.jpg">Asian Fusion</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/middle_eastern.jpg">Middle Eastern</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/european.jpg">European</option>
+                                        <option value="" data-icon="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/desert.jpg">Desert</option>
+                                    </select>
                         </div>
-                       
-                        <div class="input-field col s4">     
-                            <!-- Dropdown Trigger -->
-                            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-                                <!-- Dropdown Structure -->
-                                    <ul id='dropdown1' class='dropdown-content'>
-                                        <li><a href="#!" id="dietary_requirement" name="meat">Meat</a></li>
-                                        <li><a href="#!" id="dietary_requirement" name="veg">Veg</a></li>
-                                        <li><a href="#!" id="dietary_requirement" name="sweet">Sweet</a></li>
-                                    </ul>
-                        </div>
-                                        
-                    </div>    
-
+                    </div>
+                        
 
                     <div class="row col s12" label for="icon_prefix">
                         <br>

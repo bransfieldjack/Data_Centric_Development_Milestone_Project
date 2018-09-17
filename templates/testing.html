@@ -1,8 +1,21 @@
-{% extends 'base.html' %} {% block content %}
+<!-- templates/index.html -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
 
-<h1>Upload Images</h1>
-  {{ dropzone.create(action_view='testing') }}
+    <h1>Upload Your Files Bro</h1>
 
+    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+        
+        <input type="file" name="file" />
+        
+    </form>
 
-{% endblock %}
+</body>
+
+</html>
