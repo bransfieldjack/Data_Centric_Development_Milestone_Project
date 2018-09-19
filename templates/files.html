@@ -4,7 +4,7 @@
       <h3>Bucket Info</h3>
       <p>Created: {{ my_bucket.creation_date }}</p>
       
-      <p>{{ file_url }}</p>
+      <p>{{ url }}</p>
       <hr>
       
       <form class="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">

@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import boto3
 from config import S3_BUCKET, S3_KEY, S3_SECRET
+from boto.s3.connection import S3Connection
 
 s3_resource = boto3.resource(
    "s3",
@@ -94,7 +95,14 @@ def files():
     s3_resource = boto3.resource('s3')
     my_bucket = s3_resource.Bucket(S3_BUCKET)
     summaries = my_bucket.objects.all()
-    return render_template('files.html', my_bucket=my_bucket, summaries=summaries)
+    
+    connection = S3Connection(
+    aws_access_key_id=S3_KEY,
+    aws_secret_access_key=S3_SECRET)
+
+    url = connection.generate_url(60, 'GET')
+    
+    return render_template('files.html', my_bucket=my_bucket, summaries=summaries, url=url)
 
 
 @app.route('/upload', methods=['POST'])
