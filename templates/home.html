@@ -3,6 +3,7 @@
 <br>
 <br>
 {% for recipe in recipe_name %}
+
    <!-- Page Content -->
       <div class="container">
          
@@ -15,20 +16,20 @@
       
          <div class="row lg12">
             <div class="col-s-6">
-               <img src="{{ recipe.image_name }}" style="border: 5px solid #626d7f; padding:5px;">
+               <img src="{{ recipe_name.image_url }}">
                   <br>
                   <br>
                      <h1>
-                        <strong>{{recipe.recipe_name}}</strong>
+                        <strong>{{ recipe_name.form_data.recipe_name }}</strong>
                      </h1>
                      <br>
                      <br>
                         <h3>
-                           <P>Uploader: {{ recipe.user_name }}</P>
+                           <P>Uploader: </P>
                         </h3>
                      <br>
-                     <wrap><p>{{recipe.recipe_description}}</p></wrap>
-                        <a class="btn btn-primary" href="{{url_for('view_recipe', recipe_name=recipe._id)}}">View Recipe
+                     <wrap><p></p></wrap>
+                        <a class="btn btn-primary" href="">View Recipe
                            <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                      <br>
@@ -39,8 +40,8 @@
          </div>
                   
       </div>
-{% endfor %}
 
+{% endfor %}
 <!-- Footer -->
    <footer class="py-5 bg-dark">
       <div class="container">

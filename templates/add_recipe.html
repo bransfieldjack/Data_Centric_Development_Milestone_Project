@@ -12,18 +12,16 @@
 <div class="container">
     <br>
         <div class="row">
-
             
             <div class="container">
             
                 <form action="{{ url_for('insert_record') }}" id="form1" method="POST" class="col s12" enctype="multipart/form-data">
                     
                     <div class="row m12">
-                        <div class="col s6">  
+                        
+                        <div class="col s6"> 
                             <h3>Upload an image for your recipe:</h3>
-                        </div>
-                        <div class="col s6">  
-                            <p><input type="file" name="file"></p>
+                            <input id="file" name="file" type="file" >
                         </div>
                     </div>
                     
@@ -113,8 +111,7 @@
                             <input id="submit" type="submit" value="Submit">
                         </button>
                     </div>
-                        
-                            
+                    
 
                 </form>
                     
