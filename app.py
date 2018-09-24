@@ -12,7 +12,7 @@ from boto.s3.connection import S3Connection
 
 app = Flask(__name__)
 app.secret_key = "secret"
-app.config["MONGO_DBNAME"] = 'task_manager'
+app.config["MONGO_DBNAME"] = 'recipes-data-centric'
 app.config["MONGO_URI"] = 'mongodb://root:s!evan101@ds233212.mlab.com:33212/recipes-data-centric'
 app.config.from_object("config")
 
@@ -27,10 +27,9 @@ def landing():
     return render_template("landing.html")
     
 
-@app.route("/home", methods = ["GET","POST"])
+@app.route('/home', methods = ["GET","POST"])
 def home():
-    
-    recipe_name=mongo.db.recipes.find_one() 
+    recipe_name=mongo.db.recipes.find()
     return render_template('home.html', recipe_name = recipe_name)
     
     
