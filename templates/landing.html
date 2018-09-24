@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" type="text/css">
     
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style_landing.css')}}" type="text/css" />
     
     <!-- Required for landing page -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -44,28 +44,49 @@
         <body>
     
             <div id="login">
-                <h3 class="text-center text-white pt-5">Login form</h3>
-                <div class="container">
-                    <div id="login-row" class="row justify-content-center align-items-center">
-                        <div id="login-column" class="col-md-6">
-                            <div id="login-box" class="col-md-12">
-                                <h3 class="text-center text-info">Enter a username to continue:</h3>
+                <h3 class="text-center text-white pt-5"></h3>
+                    
+                        <div class="container">
+                            
+                                    <div class="row l12">
+                                        
+                                        <div class="col s6"> 
+                                            <h1 class="display-1">Jack's Recipe's</h1>
+                                        </div>
+                                        
+                                    </div>
+                                        
                                     <br>
                                     <br>
-                                        <form action="{{ url_for('insert_username') }}" method="POST">
-                                            <div class="input-field col s6">
-                                                <strong> User Name (Full) </strong> 
-                                                    <input id="user_name" name="user_name" type="text">
-                                                        <button class="btn waves-effect waves-light" type="submit"> 
-                                                            <input id="username" type="submit" value="Submit">
-                                                        </button>
-                                            </div>
-                                            
-                                        </form>
-                            </div>
+                                    <br>
+                                        
+                                    <div class="row m12">    
+                                        
+                                            <form action="{{ url_for('home') }}" id="form1" method="POST" class="col s12" enctype="multipart/form-data">
+                                                
+                                                <div class="row col l6" label for="icon_prefix">
+                                                    <div class="input-field col l6">
+                                                        <strong> Username: </strong> 
+                                                            <input id="username" name="username" type="text">
+                                                    </div>
+                                                </div>
+                                                
+                                                <br>
+                                                
+                                    
+                                                <div class=" col l6" label for="icon_prefix">
+                                                    <button class="btn waves-effect waves-light" type="submit"> 
+                                                            <input id="submit" type="submit" value="begin">
+                                                    </button>
+                                                </div>
+                                                        
+                                            </form>
+                                        
+                                    </div>
+                                    
+                                    </div>       
+
                         </div>
-                    </div>
-                </div>
             </div>
         
         </body>

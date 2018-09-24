@@ -24,18 +24,34 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/landing', methods=["GET","POST"])
 def landing():
-    return render_template("landing.html")
+    return render_template('landing.html')
     
+    
+@app.route('/base')
+def base():
+    current_user=mongo.db.users.find_one()
+    return render_template('base.html', current_user=current_user)
+
 
 @app.route('/home', methods = ["GET","POST"])
 def home():
+    
+    current_user=mongo.db.users.find_one()
+    
+    if request.method == 'POST':
+        users_collection=mongo.db.users
+        get_user=request.form['username']
+        save_user = {"username": get_user}
+        users_collection.insert(save_user)
+    
     recipe_name=mongo.db.recipes.find()
-    return render_template('home.html', recipe_name = recipe_name)
+    return render_template('home.html', recipe_name = recipe_name, current_user=current_user)
     
     
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
-    return render_template('add_recipe.html')
+    current_user=mongo.db.users.find_one()
+    return render_template('add_recipe.html',current_user=current_user)
     
     
 @app.route('/insert_record', methods=['GET', 'POST'])
@@ -54,7 +70,7 @@ def insert_record():
     s3_resource = boto3.resource('s3')
     my_bucket = s3_resource.Bucket(S3_BUCKET)
 
-    file = request.files['file']    #grabbing the uploaded file form the input form.
+    file = request.files['file']    #grabbing the uploaded file from the input form.
     filename = file.filename    #gets the filename of the uploaded file, to be appended to the URL for the same file in S3
     my_bucket.Object(file.filename).put(Body=file)  #putting the file into our S3 bucket
     s3 = boto3.client('s3')
@@ -80,12 +96,14 @@ def insert_username():
     
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    current_user=mongo.db.users.find_one()
+    return render_template('about.html', current_user=current_user)
     
     
 @app.route('/categories')
 def categories():
-    return render_template('categories.html')
+    current_user=mongo.db.users.find_one()
+    return render_template('categories.html',current_user=current_user)
     
     
 @app.route('/view_recipe/<recipe_name>', methods=['GET', 'POST'])
