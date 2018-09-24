@@ -1,32 +1,26 @@
 {% extends 'base.html' %} {% block content %}
 <br>
-<br>
-<br>
-<br>
     <div class="container">
-        
-        
         <div class="row l12">
-            <div class="col md9"><h1><strong><img src="{{ recipe_image.recipe_description }}"> <style="border: 5px solid #626d7f; padding:5px;"></strong></h1>
-            </div>
+            <img src="{{ recipe.image_url }}">
         </div>
         
         <div class="row l12">
             <div class="col md9">
-                <h1><strong>{{recipe.recipe_name}}</strong></h1>
+                <h1><strong>{{recipe.form_data.recipe_name}}</strong></h1>
             </div>
         </div>
             
         <div class="row lg12">
             <div class="col md3">
-                <h2>Submitted by: {{recipe.user_name}}</h2>
+                <h2>Submitted by: {{recipe.form_data.user_name}}</h2>
             </div>
         </div>
             
         <div class="row l12">
             <div class="col md4">
                 <h3>Recipe Description</h3>
-                {{recipe.recipe_description}}
+                {{recipe.form_data.recipe_description}}
             </div>
         </div>
             
@@ -35,24 +29,24 @@
         <div class="row l12">
             <div class="col lg4">
                 <h3>Ingredients</h3>
-                <pre>{{recipe.recipe_ingredients}}</pre>
+                <pre>{{recipe.form_data.recipe_ingredients}}</pre>
             </div>
             
             <div class="col lg4">
                 <h3>Prep Time:</h3>
-                {{recipe.prep_time}}
+                {{recipe.form_data.prep_time}}
             </div>
             
             <div class="col lg4">
                 <h3>Portion size:</h3>
-                {{recipe.portion_size}}
+                {{recipe.form_data.portion_size}}
             </div>
         </div>
             
         <div class="row l12">
             <div class="col md3">
                 <h3>Directions:</h3>
-                <pre><p>{{recipe.recipe_directions}}</p></pre>
+                <pre><p>{{recipe.form_data.recipe_directions}}</p></pre>
             </div>
         </div>            
 
