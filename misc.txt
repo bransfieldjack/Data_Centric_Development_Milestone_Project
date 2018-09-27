@@ -21,3 +21,6 @@ https://dyrynda.com.au/blog/uploading-files-to-amazon-s3-from-the-browser-part-o
 
 ***Flask Integration with Amazon S3***
 https://kishstats.com/python/2018/03/22/flask-amazon-s3-part-3.html
+
+Get the most recently added record in a MongoDB collection:
+https://community.exploratory.io/t/query-mongodb-for-the-n-most-recent-records/188/2

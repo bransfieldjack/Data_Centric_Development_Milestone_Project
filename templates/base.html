@@ -46,9 +46,11 @@
 <br>
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-            <i class="icon-utensils-left">Current User: {{ current_user.username }}</i>
-      </div>
+      {% for user in current_user %}
+       <div class="container">
+                <i class="icon-utensils-left">Current User: {{ user.username }}</i>
+          </div>
+       {% endfor %}
       <div class="container">
         <a class="navbar-brand" href="{{url_for('home')}}">Jack's Recipe's</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

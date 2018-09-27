@@ -29,14 +29,15 @@ def landing():
     
 @app.route('/base')
 def base():
-    current_user=mongo.db.users.find_one()
+    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
     return render_template('base.html', current_user=current_user)
 
 
 @app.route('/home', methods = ["GET","POST"])
 def home():
     
-    current_user=mongo.db.users.find_one()
+    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
+
     
     if request.method == 'POST':
         users_collection=mongo.db.users
@@ -50,7 +51,7 @@ def home():
     
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
-    current_user=mongo.db.users.find_one()
+    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
     return render_template('add_recipe.html',current_user=current_user)
     
     
@@ -96,13 +97,13 @@ def insert_username():
     
 @app.route('/about')
 def about():
-    current_user=mongo.db.users.find_one()
+    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
     return render_template('about.html', current_user=current_user)
     
     
 @app.route('/categories')
 def categories():
-    current_user=mongo.db.users.find_one()
+    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
     return render_template('categories.html',current_user=current_user)
     
     
@@ -118,16 +119,50 @@ def view_image(image_name):
     find_image = mongo.db.images.find_one({"_id": ObjectId(image_name)})
     return redirect(url_for('home', image = find_image))
     
+    
+@app.route('/most_popular', methods=['GET', 'POST'])
+def most_popular():
+    return render_template('most_popular.html')
+    
+    
+@app.route('/meat_eaters', methods=['GET', 'POST'])
+def meat_eaters():
+    return render_template('meat_eaters.html')
+    
+    
+@app.route('/vegetarian', methods=['GET', 'POST'])
+def vegetarian():
+    return render_template('vegetarian.html')
+    
+    
+@app.route('/keto_friendly', methods=['GET', 'POST'])
+def keto_friendly():
+    return render_template('keto_friendly.html')
+    
+    
+@app.route('/paleo_friendly', methods=['GET', 'POST'])
+def paleo_friendly():
+    return render_template('paleo_friendly.html')
+    
+    
+@app.route('/asian_fusion', methods=['GET', 'POST'])
+def asian_fusion():
+    return render_template('asian_fusion.html')
+    
+@app.route('/middle_eastern', methods=['GET', 'POST'])
+def middle_eastern():
+    return render_template('middle_eastern.html')
+    
+    
+@app.route('/european', methods=['GET', 'POST'])
+def european():
+    return render_template('european')
+    
+    
+@app.route('/desert', methods=['GET', 'POST'])
+def desert():
+    return render_template('desert')
 
-@app.route('/upload', methods=['POST'])
-def upload():
-    file = request.files['file']
-
-    s3_resource = boto3.resource('s3')
-    my_bucket = s3_resource.Bucket(S3_BUCKET)
-    my_bucket.Object(file.filename).put(Body=file)
-
-    return redirect(url_for('files'))
        
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
