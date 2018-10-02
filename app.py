@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
  
 #Creates a route that directs us to our sites home page. 
-@app.route('/', methods=["GET"])
+@app.route('/')
 @app.route('/landing', methods=["GET","POST"])
 def landing():
     return render_template('landing.html')
