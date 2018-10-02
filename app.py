@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 
  
 #Creates a route that directs us to our sites home page. 
-@app.route('/')
+@app.route('/', methods=["GET","POST"])
 @app.route('/landing', methods=["GET","POST"])
 def landing():
     return render_template('landing.html')
@@ -36,9 +36,8 @@ def base():
 @app.route('/home', methods = ["GET","POST"])
 def home():
     
-    current_user=mongo.db.users.find().sort([('timestamp', -1)]).limit(1)
+    current_user=mongo.db.users.find().sort([('username', 1)]).limit(1)
 
-    
     if request.method == 'POST':
         users_collection=mongo.db.users
         get_user=request.form['username']
@@ -46,6 +45,7 @@ def home():
         users_collection.insert(save_user)
     
     recipe_name=mongo.db.recipes.find()
+    
     return render_template('home.html', recipe_name = recipe_name, current_user=current_user)
     
     
