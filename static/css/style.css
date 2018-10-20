@@ -2,7 +2,7 @@ div {
     width: auto;
     word-wrap: break-word;
 }
-img {
+.img {
     height: 500px;
     width: 80%;
 }
@@ -21,3 +21,10 @@ img {
     width: 100%;
     border: 5px solid #f2f4f7; padding:2px;
 }
+recipe_photo {
+    height: 200px;
+    width: 50%;
+}
+.h1,h2,h3,h4 {
+      color:#63aa6c;
+    }

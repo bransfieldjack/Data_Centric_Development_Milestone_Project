@@ -37,59 +37,66 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
   
   </head>
- 
-        <body>
+  
+  <style>
+  
+      body { 
+			background-image: url("/static/images/landing.jpg") ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  
+            }
+            
+            div, body{
+              margin: 0;
+              padding: 0;
+              font-family: exo, sans-serif;
+              
+            }
+  </style>
+  
+    <body>
     
-            <div id="login">
-                <h3 class="text-center text-white pt-5"></h3>
+        <div id="login">
+            
+            <h3 class="text-center text-white pt-5"></h3>
                     
-                        <div class="container">
+                <div class="container">
                             
-                                    <div class="row l12">
-                                        
-                                        <div class="col s6"> 
-                                            <h1 class="display-1">Jack's Recipe's</h1>
-                                        </div>
-                                        
-                                    </div>
-                                        
-                                    <br>
-                                    <br>
-                                    <br>
-                                        
-                                    <div class="row m12">    
-                                        
-                                            <form action="{{ url_for('home') }}" id="form1" method="POST" class="col s12" enctype="multipart/form-data">
-                                                
-                                                <div class="row col l6" label for="icon_prefix">
-                                                    <div class="input-field col l6">
-                                                        <strong> Username: </strong> 
-                                                            <input id="username" name="username" type="text">
-                                                    </div>
-                                                </div>
-                                                
-                                                <br>
-                                                
-                                    
-                                                <div class=" col l6" label for="icon_prefix">
-                                                    <button class="btn waves-effect waves-light" type="submit"> 
-                                                            <input id="submit" type="submit" value="begin">
-                                                    </button>
-                                                </div>
-                                                        
-                                            </form>
-                                        
-                                    </div>
-                                    
-                                    </div>       
-
+                    <div class="row l12">
+                        <div class="col s6"> 
+                            <h1 class="display-1">Jack's Recipe's</h1>
                         </div>
-            </div>
+                    </div>
+                                        
+                    <br>
+                    <br>
+                    <br>
+                                        
+                    <div class="row m12">    
+                        <form action="{{ url_for('landing') }}" id="form1" method="POST" class="col s12" enctype="multipart/form-data">
+                            <div class="row col l6" label for="icon_prefix">
+                                <div class="input-field col l6">
+                                    <strong> Username: </strong> 
+                                        <input id="username" name="username" type="text">
+                                            <button class="btn waves-effect waves-light float-right" type="submit"> 
+                                                <input id="submit" type="submit" value="begin">
+                                            </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                                    
+                </div>       
+
+        </div>
         
-        </body>
+    </body>
 
 </html>
 

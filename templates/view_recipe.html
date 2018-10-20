@@ -1,58 +1,74 @@
 {% extends 'base.html' %} {% block content %}
 
 <br>
+
+<div class="container">
+    
     <div class="container">
-        <div class="row l12">
-            <img src="{{ recipe.image_url }}">
+        <br>
+        <div class="row">
+             <div class="col-lg-6 col-lg-6">
+                 <div class="card" style="display: inline-block;">
+                     <img class="recipe_photo" src="{{ recipe.image_url }}" class="img-fluid" alt="Responsive-image" style="border: 1px solid #61ccb3;width: 100%;height: auto">
+                 </div>
+             </div>
+             <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                 <br>
+                 <br>
+                 <br>
+                 <h2 style="color:#53bc94;">Description: </h2>
+                 {{recipe.form_data.recipe_description}}
+                 <br>
+             </div>
         </div>
         
-        <div class="row l12">
-            <div class="col md9">
-                <h1><strong>{{recipe.form_data.recipe_name}}</strong></h1>
+        <hr>
+        
+        <div class="row">
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Submitted by:</h3> {{recipe.form_data.user_name}}
             </div>
-        </div>
-            
-        <div class="row lg12">
-            <div class="col md3">
-                <h2>Submitted by: {{recipe.form_data.user_name}}</h2>
-            </div>
-        </div>
-            
-        <div class="row l12">
-            <div class="col md4">
-                <h3>Recipe Description</h3>
-                {{recipe.form_data.recipe_description}}
+            <br>
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Food Category:</h3> {{recipe.form_data.food_category}}
             </div>
         </div>
             
         <br>
-            
-        <div class="row l12">
-            <div class="col lg4">
-                <h3>Ingredients</h3>
-                <pre>{{recipe.form_data.recipe_ingredients}}</pre>
+        <hr>
+        
+        <div class="row">
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Portion:</h3> {{recipe.form_data.portion_size}}
             </div>
-            
-            <div class="col lg4">
-                <h3>Prep Time:</h3>
-                {{recipe.form_data.prep_time}}
-            </div>
-            
-            <div class="col lg4">
-                <h3>Portion size:</h3>
-                {{recipe.form_data.portion_size}}
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Utensils:</h3> {{recipe.form_data.utensils}}
             </div>
         </div>
+        
+        <br>
+        <hr>
             
-        <div class="row l12">
-            <div class="col md3">
-                <h3>Directions:</h3>
-                <pre><p>{{recipe.form_data.recipe_directions}}</p></pre>
+        <div class="row">
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Allergins:</h3> {{recipe.form_data.allergins}}
             </div>
-        </div>            
-
-            
+            <div class="col-lg-2 col-lg-6" style="color:#e8563c">
+                <h3 style="color:#53bc94;">Nutrition:</h3> {{recipe.form_data.nutrition}}
+            </div>
         </div>
+        
+        <br>
+        <hr>
+ 
+        <div class="row">
+            <div class="col-lg-12 col-lg-6" style="word-wrap: break-word;">
+                <h3 style="color:#53bc94;">Directions:</h3> <p><pre style="color:#e8563c">{{recipe.form_data.recipe_directions}}</pre></p>
+            </div>
+        </div>
+        
     </div>
+ 
+</div>
 
 {% endblock %}

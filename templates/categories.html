@@ -1,151 +1,195 @@
-{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
+  <head>
+
+    <title>Flask App</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Recipes WebApp</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Bootstrap Core Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+
+  </head>
+  
+  <style>
+    .flex-container {
+      display: flex;
+      flex-wrap: nowrap;
+      background-color: none;
+    }
+    
+    .flex-container > div {
+      background-color: none;
+      width: 100px;
+      margin: 10px;
+      text-align: center;
+      line-height: 75px;
+      font-size: 30px;
+    }
+    .h1,h2,h3,h4 {
+      color:#63aa6c;
+    }
+    
+  </style>
+
+  <body>
 <br>
-<!-- Row of three -->
-<div class="container">
+<br>
+<br>
+  
+  
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          {{session['user']}}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('home')}}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('about')}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('categories')}}">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('add_recipe')}}" id="navbarDropdownPortfolio" aria-haspopup="false" aria-expanded="false">Add A Recipe</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
 
-    <div class="row l12">
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('most_popular')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Most Popular</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/most_popular.png" class="category_image_popular">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('meat_eaters')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Meat Eaters</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/meat_eaters.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('vegetarian')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Vegetarian</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/vegetarian.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-    </div>
-    
-    <!-- Row of three -->
-    <div class="row l12">
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('keto_friendly')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Keto Friendly</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/keto.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('paleo_friendly')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Paleo Friendly</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/paleo.jpg" class="category_image_paleo">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('asian_fusion')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Asian Fusion</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/asian_fusion.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-    </div>
-    
-    <!-- Row of three -->
-    <div class="row l12">
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('middle_eastern')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Middle Eastern</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/middle_eastern.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('european')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">European</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/european.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-        <div class="col s4 m6">
-                <div class="card-action">
-                    <a href="{{url_for('desert')}}">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Desert</span>
-                                    <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/desert.jpg" class="category_image">
-                                    <p></p>
-                                </div>
-                            </div>
-                    </a>
-                </div>
-            </div>
-        
-    </div>
-    
-    
-    
-</div>
+      <!-- Page Heading -->
+      <h1 class="my-4">
+        <small></small>
+      </h1>
 
-{% endblock %}
+      <div class="row">
+        
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('meat_eaters')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/meat_eaters.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Meat Eaters</h4>
+              </div>
+          </div></a>
+        </div>
+        <br>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('vegetarian')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/vegetarian.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Vegetarian</h4>
+              </div>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('keto_friendly')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/keto.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Keto Friendly</h4>
+              </div>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('paleo_friendly')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/paleo_foods.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Paleo Friendly</h4>
+              </div>
+          </div></a>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('asian_fusion')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/asian_fusion.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Asian Fusion</h4>
+              </div>
+          </div></a>
+        </div>
+
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('middle_eastern')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/middle_eastern.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Middle Eastern</h4>
+              </div>
+          </div></a>
+        </div>
+
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('european')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/european.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">European</h4>
+              </div>
+          </div></a>
+        </div>
+
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+          <a href="{{url_for('desert')}}"><div class="card h-100">
+            <img src="https://s3-us-west-2.amazonaws.com/data-centic-development-storage/category_images/desert.jpg" class="img-thumbnail" style="border: 1px solid #61ccb3;border-radius: 4px;padding: 5px;width: 380px;height: 250px">
+              <div class="card-body">
+                <h4 class="card-title">Desert</h4>
+              </div>
+          </div>
+        </div></a>
+      </div>
+      <!-- /.row -->
+
+
+    </div>
+    <!-- /.container -->
+
+ <script type="text/javascript">
+          $(document).ready(function() {
+            $('.dropdown-trigger').dropdown();
+            $('select').formSelect();
+              
+          $(document).on("submit", "form1", function(e){
+              e.preventDefault();
+              alert('it works!');
+              return  false;
+          });
+          });
+      </script>
+
+      <!-- Footer -->
+      <footer class="py-5 bg-dark">
+         <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; JB Consulting 2018</p>
+         </div>
+      </footer>
+        
+  </body>
+
+</html>
