@@ -1,48 +1,36 @@
 {% extends 'base.html' %} {% block content %}
    {% for document in collection %}
         {% if document.form_data.food_category == "Vegetarian" %}
-            
-            
-            
-            <!-- Page Content -->
-      <div class="container">
+
+         <div class="container">
          
-         <!-- Recipe One -->
-         <div class="row lg12">
-            <div class="col-s-12">
-               <strong></strong>
-            </div>
-         </div>
-      
-         <div class="row lg12">
+         <div class="container">  
             
-            <div class="col-s-6">
-               <img src="{{ document.image_url }}" class="img-fluid">
-                  <br>
-                  <br>
-                  
-                     <h1>
-                        <strong>{{ document.form_data.recipe_name }}</strong>
-                     </h1>
-                    
-                     <br>
-                     <br>
-                        <h3>
-                           <P>Uploader: {{ document.form_data.user_name }}</P>
-                        </h3>
-                     <br>
-                     <wrap><p></p></wrap>
-                        <a class="btn btn-primary" href="{{url_for('view_recipe', recipe_name=document._id)}}">View Recipe
-                           <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
+            <div class="row">
+             <div class="col-lg-12 col-lg-12">
+                  <img src="{{ document.image_url }}" class="img-fluid" alt="Responsive-image" style="border: 1px solid #61ccb3;width: 100%;height: auto">
+                  <h3 style="color:#61ccb3;">
+                     {{ document.form_data.recipe_name }}
+                  </h3>
+               </div>
             </div>
-         </div>
+              <br>
+            <a class="btn btn-info" href="{{url_for('view_recipe', recipe_name=document._id)}}" >View Recipe
+               <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+                       
+               </div>
+               
+               <hr> 
+               
+            </div>
+                  
+                  
+         </div>        
                   
       </div>
+      
+      
             
         {% endif %}
     {% endfor %}

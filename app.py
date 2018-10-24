@@ -38,9 +38,7 @@ def base():
 
 @app.route('/home', methods = ["GET","POST"])
 def home():
-
     recipe_name=mongo.db.recipes.find()
-    
     return render_template('home.html', recipe_name = recipe_name)
     
     
@@ -78,14 +76,6 @@ def insert_record():
     data = {"form_data": request.form, "image_url": url}    #store the form data and the image URL with Key Value pairs in MongoDB
     item.insert(data)
 
-    return redirect(url_for('home'))
-    
-    
-@app.route('/insert_username', methods=['GET', 'POST'])
-def insert_username():
-    if request.method == 'POST':
-        item = mongo.db.users
-        item.insert_one(request.form.to_dict())
     return redirect(url_for('home'))
     
     

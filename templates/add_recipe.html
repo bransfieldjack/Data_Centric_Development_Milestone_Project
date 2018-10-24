@@ -2,37 +2,90 @@
 <br>
 <br>
 <div class="container">
-    <form>
+  
+  <div class="row col s6">
+    <h1>Add Recipe</h1>
+  </div>
+    
+    <form action="{{ url_for('insert_record') }}" role="form" id="form1" method="POST" enctype="multipart/form-data">
+      
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        Upload an image for your recipe:
+        <input name="file" class="form-control-file" id="exampleFormControlFile1" type="file">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        User Name (Full)
+        <input name="user_name" type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label for="exampleSelect1">Example select</label>
-        <select class="form-control" id="exampleSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+        Recipe Name
+        <input name="recipe_name" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        Preparation Time
+        <input name="prep_time" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        Portion Sizes
+        <input name="portion_size" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        Nutrition
+        <textarea name="nutrition" type="text" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        Allergins
+        <input name="allergins" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        Utensils
+        <textarea name="utensils" type="text" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        Food Type
+        <select id="food_category" name="food_category" class="form-control">
+          <option value="">Meat</option>
+          <option value="">Vegetarian</option>
+          <option value="">Keto</option>
+          <option value="">Paleo</option>
+          <option value="">Asian Fusion</option>
+          <option value="">Middle Eastern</option>
+          <option value="">European</option>
+          <option value="">Desert</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleTextarea">Example textarea</label>
-        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        Recipe Description
+        <textarea name="recipe_description" class="form-control" rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        Ingredients (Put each ingredient on a new line)
+        <textarea name="recipe_ingredients" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        Directions (Put each direction on a new line)
+        <textarea name="recipe_directions" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
       
-      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    
+    <br>
+    <br>
+    <br>
+    
 </div>
+
+<!-- Footer -->
+        <footer class="py-5 bg-dark">
+           <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; JB Consulting 2018</p>
+           </div>
+        </footer>
+
 {% endblock %}
+
+      
     
