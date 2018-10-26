@@ -4,10 +4,10 @@ import sys
 import boto3
 import botocore
 from flask import Flask, session, render_template, redirect, request, url_for
-from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from config import S3_BUCKET, S3_KEY, S3_SECRET
 from boto.s3.connection import S3Connection
+from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)
