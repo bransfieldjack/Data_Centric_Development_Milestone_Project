@@ -1,4 +1,5 @@
 botocore==1.12.32
+boto3==1.9.33
 chardet==3.0.4
 cement==2.8.2
 click==6.7
