@@ -23,7 +23,6 @@ pathspec==0.5.5
 pycrypto==2.6.1
 pycurl==7.19.3
 pygpgme==0.3
-python-apt===0.9.3.5ubuntu2
 python-dateutil==2.7.4
 requests==2.2.1
 SecretStorage==2.0.0
