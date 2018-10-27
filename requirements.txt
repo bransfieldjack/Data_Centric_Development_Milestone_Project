@@ -17,7 +17,6 @@ keyring==3.5
 lazr.uri==1.0.3
 lockfile==0.8
 MarkupSafe==1.0
-mercurial==2.8.2
 oauth==1.0.1
 paramiko==1.10.1
 pathspec==0.5.5
