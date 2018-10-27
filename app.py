@@ -47,6 +47,18 @@ def add_recipe():
     return render_template('add_recipe.html')
     
     
+@app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('edit_recipe.html', recipe=the_recipe)
+    
+    
+@app.route('/delete_recipe/<recipe_id>', methods=['GET', 'POST'])
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('home'))
+
+
 @app.route('/insert_record', methods=['GET', 'POST'])
 def insert_record():
     
@@ -63,14 +75,15 @@ def insert_record():
     s3_resource = boto3.resource('s3')
     my_bucket = s3_resource.Bucket(S3_BUCKET)
 
-    file = request.files['file']    #grabbing the uploaded file from the input form.
+    file = request.files['file'] #grabbing the uploaded file from the input form.
+    
     filename = file.filename    #gets the filename of the uploaded file, to be appended to the URL for the same file in S3
     my_bucket.Object(file.filename).put(Body=file)  #putting the file into our S3 bucket
     s3 = boto3.client('s3')
     connection = S3Connection(
     aws_access_key_id=S3_KEY,
     aws_secret_access_key=S3_SECRET)
-    
+
     url = "https://s3.amazonaws.com/recipe-user-uploads/" + filename    #create a URL for the uploaded image in the bucket
 
     data = {"form_data": request.form, "image_url": url}    #store the form data and the image URL with Key Value pairs in MongoDB
