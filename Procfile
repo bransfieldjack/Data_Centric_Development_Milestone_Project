@@ -1,2 +1,1 @@
-web: python app.py
- --no-sendfile
+--sendfile web: python app.py
