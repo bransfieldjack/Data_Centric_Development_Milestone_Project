@@ -96,7 +96,15 @@
           }
           document.getElementById("demo").innerHTML = txt;
           
-      }
+          }
+
+          function validateForm() {
+              var x = document.forms["edit_recipe_form"]["file"].value;
+              if (x == "") {
+                  alert("You must upload an Image for your recipe. ");
+                  return false;
+              }
+          }
       </script>
         
   </body>

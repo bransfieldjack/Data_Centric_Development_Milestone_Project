@@ -4,15 +4,14 @@
 <div class="container">
   
   <div class="row col s6">
-    <h1>Add Recipe</h1>
+    <h1>Edit Recipe</h1>
   </div>
     
-    <form action="{{ url_for('insert_record') }}" role="form" id="form1" method="POST" enctype="multipart/form-data">
-      
+    <form action="{{ url_for('update_record', recipe_id=recipe._id) }}" role="form" name="edit_recipe_form" id="form1" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+ 
       <div class="form-group">
         Upload an image for your recipe:
         <input name="file" class="form-control-file" id="exampleFormControlFile1" type="file">
-            <p style="color:#f44242;">Uploaded Image: </p>{{recipe.image_url}}
       </div>
       <div class="form-group">
         User Name (Full)
@@ -69,6 +68,8 @@
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="row col s6">
         <a href="{{url_for('home')}}" class="btn btn-warning">Cancel</a>
       </div>
       
