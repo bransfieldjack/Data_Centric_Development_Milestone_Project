@@ -90,16 +90,26 @@
           });
           
           function deleteRecipe() {
-          var txt;
-          if (confirm("Recipe Deleted")) {
-          } else {
-          }
-          document.getElementById("demo").innerHTML = txt;
-          
+            var txt;
+              var r = confirm("Are you sure you want to delete?");
+              if (r == true) {
+                  txt = "You pressed OK!";
+              } else if (r != true ){
+              location.href = "{{url_for('home')}}"
+              }
+              document.getElementById("demo").innerHTML = txt;
           }
 
-          function validateForm() {
+          function validateForm_Edit_recipe() {
               var x = document.forms["edit_recipe_form"]["file"].value;
+              if (x == "") {
+                  alert("You must upload an Image for your recipe. ");
+                  return false;
+              }
+          }
+          
+          function validateForm_Add_Recipe() {
+              var x = document.forms["add_recipe_form"]["file"].value;
               if (x == "") {
                   alert("You must upload an Image for your recipe. ");
                   return false;

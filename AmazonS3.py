@@ -3,8 +3,8 @@ import boto.s3
 import sys
 from boto.s3.key import Key
 
-AWS_ACCESS_KEY_ID = 'AKIAJQPL4IMC674U6V2A'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAIIEQYE3ADFJSXXBQ'
+AWS_SECRET_ACCESS_KEY = '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'
 
 bucket_name = 'recipe-user-uploads'
 conn = boto.connect_s3(AWS_ACCESS_KEY_ID,

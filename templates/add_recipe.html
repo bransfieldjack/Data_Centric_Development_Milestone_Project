@@ -7,7 +7,7 @@
     <h1>Add Recipe</h1>
   </div>
     
-    <form action="{{ url_for('insert_record') }}" role="form" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('insert_record') }}" role="form" id="form1" name="add_recipe_form" method="POST" enctype="multipart/form-data" onsubmit="return validateForm_Add_Recipe()">
       
       <div class="form-group">
         Upload an image for your recipe:
@@ -44,14 +44,14 @@
       <div class="form-group">
         Food Type
         <select id="food_category" name="food_category" class="form-control">
-          <option value="">Meat</option>
-          <option value="">Vegetarian</option>
-          <option value="">Keto</option>
-          <option value="">Paleo</option>
-          <option value="">Asian Fusion</option>
-          <option value="">Middle Eastern</option>
-          <option value="">European</option>
-          <option value="">Desert</option>
+          <option value="Meat">Meat</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Keto">Keto</option>
+          <option value="Paleo">Paleo</option>
+          <option value="Asian Fusion">Asian Fusion</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+          <option value="European">European</option>
+          <option value="Desert">Desert</option>
         </select>
       </div>
       <div class="form-group">
