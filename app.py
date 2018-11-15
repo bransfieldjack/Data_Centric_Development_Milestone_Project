@@ -156,6 +156,7 @@ def asian_fusion():
     collection = mongo.db.recipes.find()
     return render_template('asian_fusion.html', collection=collection)
     
+    
 @app.route('/middle_eastern', methods=['GET', 'POST'])
 def middle_eastern():
     collection = mongo.db.recipes.find()
