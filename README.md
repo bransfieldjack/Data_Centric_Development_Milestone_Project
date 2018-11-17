@@ -39,10 +39,10 @@ The users username can be viewed in the navbar at all times, using the flask ses
 ## Technologies used and functionality:
 Technologies used in this project include:
     
-* Bootstrap: Bootstrap was used for a basic HTML template.
+* Bootstrap: Bootstrap was used for a basic HTML templating.
 * HTML5/CSS: Used for the layout and styling of the application. 
 * Python 3.0: The back-end functionality of the application was written entirely in python 3.0.
-* Flask Microframework: Flask was used to extend pythons functionality to the front end. 
+* Flask Microframework: Flask was used to extend pythons functionality to the front end and create RESTful functionality. 
 * Amazon Web Service S3 (simple storage service) was used to store/host my images for this site.
 * Python unit testing was used to conduct unit tests of backend functionality. 
 * Selenium Web Driver with C# in Visual Studio was used to conduct browser based testing. 
@@ -50,6 +50,28 @@ Technologies used in this project include:
 
 
 ## Other Sources
+The following supplementary learning resources were explored:
+
+[Uploading images with flask and dropzone.](https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d)
+
+[Storing Flask uploaded images and files on Amazon S3:](https://greenash.net.au/thoughts/2015/04/storing-flask-uploaded-images-and-files-on-amazon-s3/)
+
+[Stack exchange article on image storage:](https://dba.stackexchange.com/questions/119271/storing-files-on-mongodb)
+
+[Connecting to S3:](http://zabana.me/notes/upload-files-amazon-s3-flask.html)
+
+[Installing Bower on Ubuntu:](https://tecadmin.net/install-bower-on-ubuntu/)
+
+[How to upload a file to directory in S3 bucket using boto:](https://stackoverflow.com/questions/15085864/how-to-upload-a-file-to-directory-in-s3-bucket-using-boto)
+
+[Upload directly to S3 from flask app. Updating IAM policy:](https://dyrynda.com.au/blog/uploading-files-to-amazon-s3-from-the-browser-part-one)
+
+[Flask Integration with Amazon S3:](https://kishstats.com/python/2018/03/22/flask-amazon-s3-part-3.html)
+
+[Get the most recently added record in a MongoDB collection:](https://community.exploratory.io/t/query-mongodb-for-the-n-most-recent-records/188/2)
+
+[Flask Session Howto:](https://www.youtube.com/watch?v=eBwhBrNbrNI)
+
 Images used for this project were taken from the pexels stock library:
 
 [Pexels](https://www.pexels.com/)
@@ -57,7 +79,7 @@ Images used for this project were taken from the pexels stock library:
 * All of the python code written in this project is my own.
 
 ## Automated testing
-This project was created using a TDD approach.
+This project was created using a TDD approach where possible.
 Unit testing was conducted as much and as frequently as possible. 
 For test cases where the unit test framework could not be applied to the work, a separate test_app.py file was used to test standalone python functions. 
 The purpose of unit testing with python is to recognise bugs/issues with the code early in the development process. 
@@ -68,31 +90,16 @@ Selenium web driver with C# and Visual Studio was used to automate testing the s
 ### Unit testing in python
 
 ```
-#Test No.1, to compare two values and return the result. 
-    def test_equal(self):
-        expected = "test"
-        actual = "test"
-        self.assertEqual(expected, actual)
+#Test no. 1, test opening a connection to the MongoBD database. 
+    def test_open(self):
+        test_database_uri = 'mongodb://test_user:P@$$w0rd1@ds117362.mlab.com:17362/mytestdb'
+        self.assertTrue(test_database_uri)
 ```
 ```
-#Test No.2, open a text file and write a value to it. 
-    def test_write_to_file(self):
-        file = "/test_file.txt"
-        value = "test"
-        with open (file, "w") as f:
-            f.writelines(value + "\n")
-        v = [row for row in f]
-        self.assertEqual(v, f)
-        print("test_ran")
-```
-```
-#Test No.3 (Part-One), to compare that the value retrieved from a text file is as expected. 
-    def test_file(self):
-        file = "/test_file.txt"
-        value = "test"
-        with open (file) as f:
-            v = [row for row in f]
-            self.assertEqual(v, value)
+#Test no. 2, test closing a connection to the MongoBD database. 
+    def test_close(self):
+        db = app.db_connection_closed(self)
+        self.assertTrue(db == True)
 ```
 
 !["I/O operation on a closed file."](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/input_output_operation_on_closed_file.PNG)
@@ -108,27 +115,26 @@ Selenium web driver with C# and Visual Studio was used to automate testing the s
  
  
 ```
-#Non-python-unit testing functions:
-    
-#Compare that the value retrieved from a text file is as expected. 
-def test_file_2(file, value):
-    with open(file) as f:
-        f.writelines(value + "\n")
-    if value == f:
-        print("Test has completed with success. ")
+#Test no. 1, test opening a connection to the MongoBD database. 
+def test_open(uri):
+    if uri == 'mongodb://test_user:P@$$w0rd1@ds117362.mlab.com:17362/mytestdb':
+        print ("Connection successful. ")
+        time.sleep(2)
+    else:
+        time.sleep(2)
+        return ("Connection un-successful. ")
 ```
 ```
-def test_riddle_file(file, value):
-    riddles = []
-    with open(file, "r") as riddle_data:
-        riddles = json.load(riddle_data)    
-                
-    if riddles == value:
-        print("Test is completing with success. ")
+#Test no. 2, test closing a connection to the MongoBD database. 
+def test_close(connection):
+    return ("Connection to the database has been closed. ")
 ```
 ```
-test_file_2(file="test_file.txt", value="test")
-test_riddle_file(file="test_riddles.json", value="test")
+#Test no. 3, test writing to a mongodb collection.
+def test_write(data, connection):
+    connection.insert(data)
+    time.sleep(2)
+    return ("Data successfully written to the database. ")
 ```
  
  
@@ -137,12 +143,12 @@ test_riddle_file(file="test_riddles.json", value="test")
 
 ### Linking/pages:
 
-Checked all outgoing (page to page) and internal links (form submission button).
+Checked all outgoing (page to page) and internal links.
 Confirmed that no orphan pages exist as part of this project. (Un-used pages left over from the development process)
 
 ### Form Testing:
 
-Tested form submission link.
+Tested form submission links.
 
 ### Cookies Testing:
 
