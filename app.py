@@ -5,7 +5,7 @@ import boto3
 import botocore
 from flask import Flask, session, render_template, redirect, request, url_for
 from bson.objectid import ObjectId
-from config import S3_BUCKET, S3_KEY, S3_SECRET
+from config import S3_BUCKET, S3_KEY, S3_SECRET #Config required for S3 setup.
 from boto.s3.connection import S3Connection
 from flask_pymongo import PyMongo
 
@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24) #Generates a random string which will encrypt the session cookie. 
 app.config["MONGO_DBNAME"] = 'recipes-data-centric'
 app.config["MONGO_URI"] = 'mongodb://root:s!evan101@ds233212.mlab.com:33212/recipes-data-centric'
-app.config.from_object("config")
+app.config.from_object("config") #S3 Bucket connection configuration details.
 
 
 mongo = PyMongo(app)

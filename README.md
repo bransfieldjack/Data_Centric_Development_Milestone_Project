@@ -62,7 +62,7 @@ Unit testing was conducted as much and as frequently as possible.
 For test cases where the unit test framework could not be applied to the work, a separate test_app.py file was used to test standalone python functions. 
 The purpose of unit testing with python is to recognise bugs/issues with the code early in the development process. 
 
-
+Selenium web driver with C# and Visual Studio was used to automate testing the sites behaviour in the web browser. 
 
 
 ### Unit testing in python
