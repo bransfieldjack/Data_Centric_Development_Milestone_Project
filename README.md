@@ -60,8 +60,6 @@ The following supplementary learning resources were explored:
 
 [Connecting to S3:](http://zabana.me/notes/upload-files-amazon-s3-flask.html)
 
-[Installing Bower on Ubuntu:](https://tecadmin.net/install-bower-on-ubuntu/)
-
 [How to upload a file to directory in S3 bucket using boto:](https://stackoverflow.com/questions/15085864/how-to-upload-a-file-to-directory-in-s3-bucket-using-boto)
 
 [Upload directly to S3 from flask app. Updating IAM policy:](https://dyrynda.com.au/blog/uploading-files-to-amazon-s3-from-the-browser-part-one)
@@ -102,13 +100,7 @@ Selenium web driver with C# and Visual Studio was used to automate testing the s
         self.assertTrue(db == True)
 ```
 
-!["I/O operation on a closed file."](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/input_output_operation_on_closed_file.PNG)
-
-
-!["Read/Write permissions granted."](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/read_write_permissions_granted_text_file.PNG)
-
-
-!["Value not expected."](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/value_not_expected.PNG)
+!["Opening/closing connection ot the MongoDB. "](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/testing/unittest_app.PNG)
 
 
 ### Custom Python Test Functions
@@ -137,6 +129,7 @@ def test_write(data, connection):
     return ("Data successfully written to the database. ")
 ```
  
+!["Opening/closing connection and writing to the MongoDB. "](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/testing/test_app.PNG)
  
 ## Manual Testing
 
@@ -184,9 +177,12 @@ Wireframing for this app was done using Balsamiq Mock-ups (Web-based).
 Files were transferred to Cloud 9 from my local machine.
 
 
-![](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/index_page.PNG)
-![](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/riddle_page.PNG)
-![](https://s3-ap-southeast-2.amazonaws.com/practical-python-milestone-project/game_over_page.PNG)
+![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/login.PNG)
+![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/homepage.PNG)
+![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/categories.PNG)
+![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/add_recipe.PNG)
+![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/about.PNG)
+
 
 
 ## Deploying the project:
