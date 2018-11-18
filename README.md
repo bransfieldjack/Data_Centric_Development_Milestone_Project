@@ -210,20 +210,14 @@ Instructions for deploying the code are as follows:
 * Create a 'PORT' config var, with a corresponding value of: 5000.
 * To access the application, click open on the heroku console (top right) and record the apps URL. 
 
-## Examples of Code Refactoring:
+## Security Review
 
-### Changed condition on when the riddles are no longer displayed by removing:
-    
-    ```
-    if request.method == "POST":
-            if user_answer == "palmtree" and index >= 7:
-                return redirect("game_over")
-    ```
-    
-### Replacing with:
-   
-    ```
-    if request.method == "POST":
-            if index >= 8:
-                return redirect("game_over")
-    ```
+The following measures were undertaken to ensure the security of this app and the platforms used to host/service it. 
+All required packages have been upgraded to the latest versions where possible. 
+With regards to the secret keys used for the BOTO3 library to upload to the AWS S3 bucket, these keys have not been included in any github push and are stored in a secure, offline location. 
+An approriate IAM user has been added for this web app in AWS and granted the necessary permissions to ensure all CRUD functionality is functioning as intended. 
+
+![Github Security Alerts. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/alerts.PNG)
+![Requests package upgrade. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/requests.PNG)
+![Flask package upgrade. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/flask.PNG)
+![Bootstrap package upgrade. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/bootstrap.PNG)
