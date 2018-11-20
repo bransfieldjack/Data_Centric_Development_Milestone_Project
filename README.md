@@ -70,6 +70,10 @@ The following supplementary learning resources were explored:
 
 [Flask Session Howto:](https://www.youtube.com/watch?v=eBwhBrNbrNI)
 
+[Selenium Testing:](https://www.seleniumhq.org/download/)
+
+[Using AWS S3 to Store Static Assets and File Uploads](https://devcenter.heroku.com/articles/s3)
+
 Images used for this project were taken from the pexels stock library:
 
 [Pexels](https://www.pexels.com/)
@@ -81,8 +85,6 @@ This project was created using a TDD approach where possible.
 Unit testing was conducted as much and as frequently as possible. 
 For test cases where the unit test framework could not be applied to the work, a separate test_app.py file was used to test standalone python functions. 
 The purpose of unit testing with python is to recognise bugs/issues with the code early in the development process. 
-
-Selenium web driver with C# and Visual Studio was used to automate testing the sites behaviour in the web browser. 
 
 
 ### Unit testing in python
@@ -100,7 +102,7 @@ Selenium web driver with C# and Visual Studio was used to automate testing the s
         self.assertTrue(db == True)
 ```
 
-!["Opening/closing connection ot the MongoDB. "](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/testing/unittest_app.PNG)
+!["Opening/closing connection to the MongoDB. "](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/testing/unittest_app.PNG)
 
 
 ### Custom Python Test Functions
@@ -141,7 +143,7 @@ Confirmed that no orphan pages exist as part of this project. (Un-used pages lef
 
 ### Form Testing:
 
-Tested form submission links.
+Tested form submission links and form validation for image upload - no issues.
 
 ### Cookies Testing:
 
@@ -154,17 +156,17 @@ Validated all HTML code using: https://validator.w3.org/ (Fixed minor errors/war
 
 ### Database Testing:
 
-Not applicable.
+Verified that test data was writing to the mongoDB database. 
+Verified the abillity to retrieve data from the same database.
 
 ### Ease of Learning:
 
-The app is quite minimal. Everything the user needs in terms of information is clearly displayed. Clickable links are made obvious when appropriate.
+Everything the user needs in terms of information is clearly displayed. Clickable links are made obvious when appropriate, and large icons are used for clarity.
 
 ### Navigation:
 
 The site is relatively easy to navigate. 
-The user cannot progress throughout the game without entering a username. 
-The sites scoreboard can be accessed via the link provided. 
+The user cannot progress throughout the site without entering a username. 
 
 ### Compatibility:
 
@@ -184,7 +186,6 @@ Files were transferred to Cloud 9 from my local machine.
 ![](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/wire+frames/about.PNG)
 
 
-
 ## Deploying the project:
 This app is currently being hosted on Heroku. 
 Instructions for deploying the code are as follows:
@@ -202,12 +203,15 @@ Instructions for deploying the code are as follows:
 * Initialise your repo, if you havent already done so.
 * Connect the Heroku App repo using the 'heroku git:remote -a (app name)' command.
 * In order for Heroku to build your app, you will need to specify the requirements using the following command: 'sudo pip3 freeze --local > requirements.txt'.
+* As per the development process, remove all packages/dependencies installed as a result of experimentation which may prohibit succesful build on the heroku container. 
 * You will also need to generate a "Procfile" before pushing your code. This acts as the entry point for your application. To generate this file, use the 'echo web: python app.py > Procfile' command from bash.
 * Use git add. to save your work.
 * Add your first commit (git commit -m "Initial Commit. "), then use 'git push heroku master' to push your code to Heroku. 
 * To complete the process and ensure that your app will run, set the appropriate config variables from the heroku settings tab. 
 * Create an 'IP' config var, with a corresponding value of: 0.0.0.0.
 * Create a 'PORT' config var, with a corresponding value of: 5000.
+* Create a config var for storage of the S3 secret access key credentials. 
+* Create a config var containing your mongDB username and password credentials. 
 * To access the application, click open on the heroku console (top right) and record the apps URL. 
 
 ## Security Review
@@ -216,6 +220,7 @@ The following measures were undertaken to ensure the security of this app and th
 All required packages have been upgraded to the latest versions where possible. 
 With regards to the secret keys used for the BOTO3 library to upload to the AWS S3 bucket, these keys have not been included in any github push and are stored in a secure, offline location. 
 An approriate IAM user has been added for this web app in AWS and granted the necessary permissions to ensure all CRUD functionality is functioning as intended. 
+Two factor authentication has been enabled for both the user and root accounts on AWS and the MLab administrator account used to host my MongoDB. 
 
 ![Github Security Alerts. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/alerts.PNG)
 ![Requests package upgrade. ](https://s3-us-west-2.amazonaws.com/data-centic-development-storage/readme.md/security/requests.PNG)
