@@ -11,7 +11,7 @@ As per the requirements outlined in the project brief, the assumption is that th
 The schema design incorporated for my app database was intended to provide functionality given the unstructured data set and the user requirements of the app.
 Data fields ranged from the user’s credentials to the S3 bucket URL required for retrieval from AWS. 
 
-The project can be accessed from the following link: [riddle-project](https://data-centric-milestone-project.herokuapp.com/)
+The project can be accessed from the following link: [recipes-project](https://data-centric-milestone-project.herokuapp.com/)
 
 
 ## Site Navigation Description:

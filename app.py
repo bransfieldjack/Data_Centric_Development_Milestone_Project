@@ -13,7 +13,7 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 app.secret_key = os.urandom(24) #Generates a random string which will encrypt the session cookie. 
 app.config["MONGO_DBNAME"] = 'recipes-data-centric'
-app.config["MONGO_URI"] = 'mongodb://mongo_user:Dpnb9QmcRrrEuawS@ds233212.mlab.com:33212/recipes-data-centric'
+app.config["MONGO_URI"] = 'mongodb://(user):(user)@ds233212.mlab.com:33212/recipes-data-centric'
 app.config.from_object("config") #S3 Bucket connection configuration details.
 
 
