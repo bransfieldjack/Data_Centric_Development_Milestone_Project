@@ -2,7 +2,7 @@
 
 
 ## About: 
-This is the third milestone project in the Code Institute Full Stack Software Development Course. 
+This is the third of four milestone projects in the Code Institute Full Stack Software Development Course, having already completed the Stream One (old LMS) and Practical Python projects. 
 The brief for this project required building a data-driven web application using the technologies learned throughout the Data Centric Development module.
 The project required the storage and retrieval of easily accessible cooking recipes. 
 The database technology I chose for this project, was MongoDB. 
@@ -19,13 +19,13 @@ The user arrives at the apps login screen, where they will be prompted to input 
 There is no option for the user to navigate through the app without first choosing a username. 
 After selecting the appropriate username, the user is directed to the home page where they are greeted by a scrolling list of all added recipes, and their corresponding summaries. 
 The user can select any recipe in the list by clicking on the recipe image. 
-This will direct the user to the view recipe page, where they can find detailed information such as allergy and nutritional information, as well as directions on how to prepare the meal. 
+This will direct the user to the view recipe page, where they can find details such as allergy and nutritional information, as well as directions on how to prepare the meal. 
 At the bottom of the view recipe page, the user will find an 'edit' and a 'delete' button. 
 As the names suggest, these can be used to update information contained in the recipe or remove the recipe from the site entirely.
 
 The navbar is present on every page of this site. 
 Contained in the navbar are options such as, 'about', 'categories', 'add a recipe' and 'home'.
-The about page contains showcases information about the sites intentions, ethos and goal. 
+The about page contains information about the sites intentions, ethos and goal. 
 This is meant as an informational supplement only. 
 
 Navigating to the 'add a recipe' page will allow the user to input their own recipe from scratch. 
@@ -205,7 +205,7 @@ Instructions for deploying the code are as follows:
 * In order for Heroku to build your app, you will need to specify the requirements using the following command: 'sudo pip3 freeze --local > requirements.txt'.
 * As per the development process, remove all packages/dependencies installed as a result of experimentation which may prohibit successful build on the heroku container. 
 * You will also need to generate a "Procfile" before pushing your code. This acts as the entry point for your application. To generate this file, use the 'echo web: python app.py > Procfile' command from bash.
-* Use git add. to save your work.
+* Use git add . to save your work.
 * Add your first commit (git commit -m "Initial Commit. "), then use 'git push heroku master' to push your code to Heroku. 
 * To complete the process and ensure that your app will run, set the appropriate config variables from the heroku settings tab. 
 * Create an 'IP' config var, with a corresponding value of: 0.0.0.0.
