@@ -4,7 +4,7 @@
 ## IMPORTANT:
 
 This web app runs using AWS S3 bucket storage. 
-During the development stage of this project, a security breach of the administrator account resulted in an on-going investigation by AWS - which still has not reached resolution. 
+During the development stage of this project, a security breach of the administrator account resulted in an on-going investigation by AWS - which is pending resolution. 
 As of this point, the site is completely functional and accessible through the link provided below. 
 There is a possibility that the account may be suspended during the review of this project as it has already been submitted. 
 To mitigate any confusion, I have notified student care and should the site become unavailable during the review process further discussion will take place. 
